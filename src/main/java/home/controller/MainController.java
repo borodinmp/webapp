@@ -6,13 +6,10 @@ import home.service.FindService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.validation.Valid;
-import java.util.Map;
 
 @Controller
     public class MainController {
@@ -40,7 +37,7 @@ import java.util.Map;
 
     @PostMapping("text")
     public String add(
-            @Valid Information info,
+            Information info,
             Model model) {
 
         infoRepo.save(info);

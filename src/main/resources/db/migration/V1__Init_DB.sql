@@ -8,5 +8,3 @@ create table information (
   address varchar(255),
   primary key (id)
 );
-
-
