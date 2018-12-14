@@ -3,16 +3,41 @@
 
 <div>
     <form method="post" action="text">
-        <div><input type="text" name="nameOrg" placeholder="Input text here" required> Введите наименование организации
+        <div><input type="text" name="nameOrg" placeholder="Input text here" value = "<#if info ??>${info.nameOrg}</#if>"> Введите наименование организации
+        <#if nameOrgError??>
+                      <div class="invalid-feedback">
+                          ${nameOrgError}
+                      </div>
+        </#if>
         </div>
         <br>
-        <div><input type="text" name="inn" placeholder="Input text here" required minlength="10" maxlength="12"> Введите ИНН
+        <div><input type="text" name="inn" placeholder="Input text here" value = "<#if info ??>${info.inn}</#if>"> Введите ИНН
+                         <#if innError??>
+                      <div class="invalid-feedback">
+                          ${innError}
+                      </div>
+                         </#if>
+                        <#if checkInn??>
+                      <div class="invalid-feedback">
+                          ${checkInn}
+                      </div>
+                                     </#if>
         </div>
         <br>
-        <div><input type="text" name="ogrn" placeholder="Input text here" required minlength="13" maxlength="15"> Введите ОГРН
+        <div><input type="text" name="ogrn" placeholder="Input text here" value = "<#if info ??>${info.ogrn}</#if>"> Введите ОГРН
+                         <#if ogrnError??>
+                      <div class="invalid-feedback">
+                          ${innError}
+                      </div>
+                         </#if>
         </div>
         <br>
-        <div><input type="text" name="address" placeholder="Input text here" required> Введите адрес
+        <div><input type="text" name="address" placeholder="Input text here" value = "<#if info ??>${info.address}</#if>"> Введите адрес
+                         <#if addressError??>
+                      <div class="invalid-feedback">
+                          ${innError}
+                      </div>
+                         </#if>
         </div>
         <br>
         <button type="submit">Отправить</button>

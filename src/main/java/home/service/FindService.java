@@ -20,7 +20,7 @@ public class FindService {
         } else if(filter != null & !filter.isEmpty() & selectFilter.equals("2")) {
             information = infoRepo.findByNameOrg(filter);
         } else if(filter != null & !filter.isEmpty() & selectFilter.equals("3")) {
-            information = infoRepo.findByInn(filter);
+            /*information = infoRepo.findByInn(filter);*/
         } else if(filter != null & !filter.isEmpty() & selectFilter.equals("4")) {
             information = infoRepo.findByOgrn(filter);
         } else if(filter != null & !filter.isEmpty() & selectFilter.equals("5")) {

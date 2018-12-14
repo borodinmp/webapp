@@ -1,19 +1,27 @@
 package home.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.UniqueElements;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Information {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @NotBlank(message = "Please fill the text")
+    @Length(max = 255, message = "Text is to long")
     private String nameOrg;
+    @NotBlank(message = "Please fill the text")
+    @Length(max = 255, message = "Text is to long")
     private String inn;
+    @NotBlank(message = "Please fill the text")
+    @Length(max = 255, message = "Text is to long")
     private String ogrn;
+    @NotBlank(message = "Please fill the text")
+    @Length(max = 255, message = "Text is to long")
     private String address;
 
     public Information() {

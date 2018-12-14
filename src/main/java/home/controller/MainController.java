@@ -6,9 +6,13 @@ import home.service.FindService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
+import java.util.Map;
 
 
 @Controller
@@ -37,11 +41,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 
     @PostMapping("text")
     public String add(
-            Information info,
+            @Valid Information info,
+            BindingResult bindingResult,
             Model model) {
 
-        infoRepo.save(info);
+        Information infoFromDb = infoRepo.findByInn(info.getInn());
 
+        if(infoFromDb != null || bindingResult.hasErrors()) {
+            Map<String, String> errorsMap = ControllerUtils.getErrors(bindingResult);
+            model.mergeAttributes(errorsMap);
+            model.addAttribute("info", info);
+            model.addAttribute("checkInn", "Организация с таким инн уже присутствует в БД");
+        } else {
+            model.addAttribute("info", null);
+            infoRepo.save(info);
+        }
         Iterable<Information> infos = infoRepo.findAll();
         model.addAttribute("infos", infos);
 
