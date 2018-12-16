@@ -11,17 +11,15 @@ public class Information {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @NotBlank(message = "Please fill the text")
-    @Length(max = 255, message = "Text is to long")
+    @NotBlank(message = "Пожалуйста, введите наименование организации")
+    @Length(max = 255, message = "Слишком длинный текст")
     private String nameOrg;
-    @NotBlank(message = "Please fill the text")
-    @Length(max = 255, message = "Text is to long")
+    @Length(min = 10, max = 12, message = "Введите значение ИНН состоящее из 10-12 цифр")
     private String inn;
-    @NotBlank(message = "Please fill the text")
-    @Length(max = 255, message = "Text is to long")
+    @Length(min = 13, max = 15, message = "Введите значение ОГРН состоящее из 13-15 цифр")
     private String ogrn;
-    @NotBlank(message = "Please fill the text")
-    @Length(max = 255, message = "Text is to long")
+    @NotBlank(message = "Пожалуйста, введите адрес организации")
+    @Length(max = 255, message = "Слишком длинный текст")
     private String address;
 
     public Information() {

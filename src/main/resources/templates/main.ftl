@@ -3,41 +3,65 @@
 
 <div>
     <form method="post" action="text">
-        <div><input type="text" name="nameOrg" placeholder="Input text here" value = "<#if info ??>${info.nameOrg}</#if>"> Введите наименование организации
+        <div><input type="text" name="nameOrg" placeholder="Input text here"
+                    value="<#if info ??>${info.nameOrg}</#if>">
+            Введите наименование организации
+            <div style="color: red">
         <#if nameOrgError??>
-                      <div class="invalid-feedback">
-                          ${nameOrgError}
-                      </div>
+            <div>
+                ${nameOrgError}
+            </div>
         </#if>
+                <#if checkNameOrg??>
+                      <div class="invalid-feedback">
+                          ${checkNameOrg}
+                      </div>
+                 </#if>
+            </div>
         </div>
         <br>
-        <div><input type="text" name="inn" placeholder="Input text here" value = "<#if info ??>${info.inn}</#if>"> Введите ИНН
-                         <#if innError??>
-                      <div class="invalid-feedback">
-                          ${innError}
-                      </div>
-                         </#if>
-                        <#if checkInn??>
-                      <div class="invalid-feedback">
-                          ${checkInn}
-                      </div>
-                                     </#if>
+        <div><input type="text" name="inn" minlength="10" maxlength="12" placeholder="Input text here"
+                    value="<#if info ??>${info.inn}</#if>"> Введите ИНН
+            <div style="color: red">
+                <#if innError??>
+                    <div>
+                        ${innError}
+                    </div>
+                </#if>
+                <#if checkInn??>
+                    <div>
+                        ${checkInn}
+                    </div>
+                </#if>
+            </div>
         </div>
         <br>
-        <div><input type="text" name="ogrn" placeholder="Input text here" value = "<#if info ??>${info.ogrn}</#if>"> Введите ОГРН
-                         <#if ogrnError??>
-                      <div class="invalid-feedback">
-                          ${innError}
-                      </div>
-                         </#if>
+        <div><input type="text" name="ogrn" minlength="13" maxlength="15" placeholder="Input text here"
+                    value="<#if info ??>${info.ogrn}</#if>"> Введите ОГРН
+            <div style="color: red">
+                <#if ogrnError??>
+                    <div>
+                        ${ogrnError}
+                    </div>
+                </#if>
+                <#if checkOgrn??>
+                    <div>
+                        ${checkOgrn}
+                    </div>
+                </#if>
+            </div>
         </div>
         <br>
-        <div><input type="text" name="address" placeholder="Input text here" value = "<#if info ??>${info.address}</#if>"> Введите адрес
-                         <#if addressError??>
-                      <div class="invalid-feedback">
-                          ${innError}
-                      </div>
-                         </#if>
+        <div><input type="text" name="address" placeholder="Input text here"
+                    value="<#if info ??>${info.address}</#if>">
+            Введите адрес
+            <div style="color: red">
+                <#if addressError??>
+                    <div>
+                        ${addressError}
+                    </div>
+                </#if>
+            </div>
         </div>
         <br>
         <button type="submit">Отправить</button>

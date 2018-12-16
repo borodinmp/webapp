@@ -3,6 +3,7 @@ package home.controller;
 import home.domain.Information;
 import home.repos.InfoRepo;
 import home.service.FindService;
+import home.service.MainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,10 +17,13 @@ import java.util.Map;
 
 
 @Controller
-    public class MainController {
+public class MainController {
 
     @Autowired
     FindService findService;
+
+    @Autowired
+    MainService mainService;
 
     @Autowired
     InfoRepo infoRepo;
@@ -45,17 +49,8 @@ import java.util.Map;
             BindingResult bindingResult,
             Model model) {
 
-        Information infoFromDb = infoRepo.findByInn(info.getInn());
+        mainService.validate(info, model, bindingResult);
 
-        if(infoFromDb != null || bindingResult.hasErrors()) {
-            Map<String, String> errorsMap = ControllerUtils.getErrors(bindingResult);
-            model.mergeAttributes(errorsMap);
-            model.addAttribute("info", info);
-            model.addAttribute("checkInn", "Организация с таким инн уже присутствует в БД");
-        } else {
-            model.addAttribute("info", null);
-            infoRepo.save(info);
-        }
         Iterable<Information> infos = infoRepo.findAll();
         model.addAttribute("infos", infos);
 

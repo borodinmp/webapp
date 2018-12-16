@@ -14,14 +14,17 @@ public interface InfoRepo extends JpaRepository<Information, Long> {
 
     List<Information> findByNameOrg(String nameOrg);
 
-    Information findByInn(String inn);
+    Information findAllByNameOrg(String nameOrg);
+
+    List<Information> findByInn(String inn);
+
+    Information findAllByInn(String inn);
 
     List<Information> findByOgrn(String ogrnn);
 
-    List<Information> findByAddress(String address);
+    Information findAllByOgrn(String ogrn);
 
-    @Query(value = "select inn from information where inn =:idx", nativeQuery = true)
-    Information checkInn(@Param("idx") String idx);
+    List<Information> findByAddress(String address);
 
 }
 
