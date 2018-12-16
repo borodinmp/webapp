@@ -7,21 +7,22 @@ import java.util.List;
 
 public interface InfoRepo extends JpaRepository<Information, Long> {
 
-    List<Information> findByNameOrgLikeOrInnLikeOrOgrnLikeOrAddress(String nameOrg, String inn, String ogrn, String addressOrg);
+    List<Information> findByNameOrgContainsOrInnContainsOrOgrnContainsOrAddressContains(
+            String nameOrg, String inn, String ogrn, String addressOrg);
 
-    List<Information> findByNameOrg(String nameOrg);
+    List<Information> findByNameOrgContains(String nameOrg);
 
-    Information findAllByNameOrg(String nameOrg);
+    Information findByNameOrg(String nameOrg);
 
-    List<Information> findByInn(String inn);
+    List<Information> findByInnContains(String inn);
 
-    Information findAllByInn(String inn);
+    Information findByInn(String inn);
 
-    List<Information> findByOgrn(String ogrnn);
+    List<Information> findByOgrnContains(String ogrnn);
 
-    Information findAllByOgrn(String ogrn);
+    Information findByOgrn(String ogrn);
 
-    List<Information> findByAddress(String address);
+    List<Information> findByAddressContains(String address);
 
 }
 

@@ -16,9 +16,9 @@ public class Information {
     @NotBlank(message = "Введите наименование организации")
     @Length(max = 255, message = "Слишком длинный текст")
     private String nameOrg;
-    @Length(min = 10, max = 12, message = "Введите значение ИНН (10-12 цифр)")
+    @Length(min = 10, max = 10, message = "Введите значение ИНН (10 знаков)")
     private String inn;
-    @Length(min = 13, max = 15, message = "Введите значение ОГРН (13-15 цифр)")
+    @Length(min = 13, max = 15, message = "Введите значение ОГРН (13-15 знаков)")
     private String ogrn;
     @NotBlank(message = "Введите адрес организации")
     @Length(max = 255, message = "Слишком длинный текст")

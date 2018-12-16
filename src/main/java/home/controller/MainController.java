@@ -3,7 +3,7 @@ package home.controller;
 import home.domain.Information;
 import home.repos.InfoRepo;
 import home.service.FindService;
-import home.service.MainService;
+import home.service.ValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +22,7 @@ public class MainController {
     FindService findService;
 
     @Autowired
-    MainService mainService;
+    ValidationService validationService;
 
     @Autowired
     InfoRepo infoRepo;
@@ -48,7 +48,7 @@ public class MainController {
             BindingResult bindingResult,
             Model model) {
 
-        mainService.validate(info, model, bindingResult);
+        validationService.validate(info, model, bindingResult);
 
         Iterable<Information> infos = infoRepo.findAll();
         model.addAttribute("infos", infos);

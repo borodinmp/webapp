@@ -36,7 +36,7 @@
                 </td>
                 <td>
                     <div>
-                        <input type="text" name="inn" minlength="10" maxlength="12" placeholder="Input text here"
+                        <input type="text" name="inn" minlength="10" maxlength="10" placeholder="Input text here"
                                value="<#if info ??>${info.inn}</#if>">
                         <div style="color: red">
                 <#if innError??>

@@ -16,15 +16,16 @@ public class FindService {
     public Iterable find (String filter, String selectFilter) {
 
         if(filter != null & !filter.isEmpty() & selectFilter.equals("1")) {
-            information = infoRepo.findByNameOrgLikeOrInnLikeOrOgrnLikeOrAddress(filter, filter, filter, filter);
+            information = infoRepo.findByNameOrgContainsOrInnContainsOrOgrnContainsOrAddressContains(
+                    filter, filter, filter, filter);
         } else if(filter != null & !filter.isEmpty() & selectFilter.equals("2")) {
-            information = infoRepo.findByNameOrg(filter);
+            information = infoRepo.findByNameOrgContains(filter);
         } else if(filter != null & !filter.isEmpty() & selectFilter.equals("3")) {
-            information = infoRepo.findByInn(filter);
+            information = infoRepo.findByInnContains(filter);
         } else if(filter != null & !filter.isEmpty() & selectFilter.equals("4")) {
-            information = infoRepo.findByOgrn(filter);
+            information = infoRepo.findByOgrnContains(filter);
         } else if(filter != null & !filter.isEmpty() & selectFilter.equals("5")) {
-            information = infoRepo.findByAddress(filter);
+            information = infoRepo.findByAddressContains(filter);
         } else information = infoRepo.findAll();
 
         return information;
